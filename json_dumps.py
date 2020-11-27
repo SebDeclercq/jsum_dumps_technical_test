@@ -1,5 +1,5 @@
 from collections.abc import Iterable
-
+import pdb
 def convert_special_object(obj):
     if obj is None:
         return "null"
@@ -29,7 +29,7 @@ def manage_list(obj):
         if isinstance(elem, Iterable):
             copy_obj.append(json_dumps(elem, nested=True))
         elif is_special_object(elem):
-            copy_obj.append(convert_special_object((elem)))
+            copy_obj.append(convert_special_object(elem))
         else:
             copy_obj.append(str(elem))
 

@@ -26,3 +26,9 @@ def test_turn_nested_list_into_string():
 
 def test_turn_nested_dict_into_string():
     assert json_dumps({1: {1: 2}}) == "{'1': {'1': '2'}}"
+
+def test_complicated_nested_object():
+    assert json_dumps([1, [1, 2], {1: None}, [1, {2: True}]]) == "['1', ['1', '2'], {'1': 'null'}, ['1', {'2': 'true'}]]"
+
+def test_complicated_nested_object2():
+    assert json_dumps([[1, 2, 3, [1, {4: None}]]]) == "[['1', '2', '3', ['1', {'4': 'null'}]]]"
