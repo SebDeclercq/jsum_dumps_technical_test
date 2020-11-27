@@ -1,7 +1,7 @@
 from collections.abc import Iterable
 
 def convert_special_object(obj):
-    """ Convert special objects such as None, True and False
+    """ Convert objects such as None, True and False
     to their string values: null, true and false.
     """
 
@@ -13,11 +13,11 @@ def convert_special_object(obj):
         return "false"
 
 def is_special_object(obj):
-
-    return (obj is None) or (obj is True) or (obj is False)
+    """Is an object None, True or False"""
+    return any([(obj is None), (obj is True), (obj is False)])
 
 def json_dumps(obj, nested=False):
-    """Dump an object into is string representation.
+    """Dump recursively an object into is string representation.
 
     json_dumps(1)
     >>> '1'
