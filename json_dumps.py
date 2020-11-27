@@ -28,22 +28,20 @@ def json_dumps(obj, nested=False):
     json_dumps([1, {2: True}])
     >>> "['1', {'2': 'true'}]"
     """
-
     if isinstance(obj, Iterable) and (not isinstance(obj, str)):
         if isinstance(obj, list):
             return str(manage_list(obj)) if not nested else manage_list(obj)
-        elif isinstance(obj, dict):
+        if isinstance(obj, dict):
             return str(manage_dict(obj)) if not nested else manage_dict(obj)
     elif is_special_object(obj):
         return convert_special_object(obj)
-    else:
-        return str(obj)
+    return str(obj)
 
 
 def manage_list(obj):
     """Turn a list info his string representation."""
-
     copy_obj = []
+
     for elem in obj:
         # If the list is nested
         if isinstance(elem, Iterable):
@@ -57,7 +55,6 @@ def manage_list(obj):
 
 def manage_dict(obj):
     """Turn a dict into his string representation."""
-
     copy_obj = {}
 
     for key, value in obj.items():
